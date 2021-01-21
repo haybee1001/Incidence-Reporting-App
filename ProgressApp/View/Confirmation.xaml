@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+               mc:Ignorable="d"
+             x:Class="ProgressApp.View.Confirmation"  BackgroundColor="Transparent" >
+    
+    <pages:PopupPage.Content>
+
+        <Grid RowDefinitions="*">
+            <yummy:PancakeView  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White" Margin="20"   Padding="30" CornerRadius="10"  >
+
+                <StackLayout >
+                    <Label Text="Are you sure you want to exit? "></Label>
+                    <StackLayout Orientation="Horizontal" >
+                        <Button Text="Yes" Clicked="ConfirmationYes"></Button>
+                     <Button Text="No"  Clicked="ConfirmationNo"></Button>
+                        </StackLayout >
+
+                        </StackLayout>
+
+              
+          </yummy:PancakeView>
+        </Grid>
+
+     </pages:PopupPage.Content>
+</pages:PopupPage>

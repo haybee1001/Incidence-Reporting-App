@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProgressApp.View.EnableGPS" BackgroundColor="{DynamicResource BaseColor}" NavigationPage.HasNavigationBar="False">
+    
+    <pages:PopupPage.Content>
+      
+           
+                <Grid VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="White" WidthRequest="300" HeightRequest="200" Margin="20" CornerRadius="20" Padding="20" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="2,1" Opacity="10">
+                        <yummy:PancakeView.Border>
+                            <yummy:Border Thickness="2" Color="#E1E4DB " >
+                                <yummy:Border.GradientStops>
+                                    <yummy:GradientStopCollection>
+                                        <yummy:GradientStop Color="#D1D9DD" Offset="1"/>
+                                        <yummy:GradientStop Color="#F7F8F8" Offset="-0.2"/>
+                                    </yummy:GradientStopCollection>
+                                </yummy:Border.GradientStops>
+                            </yummy:Border>
+                        </yummy:PancakeView.Border>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="GPS LOCATION SERVICE NOT ENABLED ON DEVICE" Grid.Row="0" FontSize="16"  HorizontalTextAlignment="Center" FontFamily="MediumFont"  VerticalTextAlignment="End" TextColor="Black" Opacity="0.7"/>
+                            <Label Text="App require the device location service. Please enable location on device to continue" Grid.Row="1" FontSize="14" CharacterSpacing="0.5" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontFamily="LightFont"></Label>
+                           <Button Text="Return" x:Name="btnEnable" Clicked="EnableUserGPS" BorderColor="#598EFE" BackgroundColor="#5A78F1" HeightRequest="40" WidthRequest="200" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" CornerRadius="20" TextColor="White"  />
+                        </Grid>
+                    </yummy:PancakeView>
+
+                </Grid>
+           
+
+     
+    </pages:PopupPage.Content>
+</pages:PopupPage>

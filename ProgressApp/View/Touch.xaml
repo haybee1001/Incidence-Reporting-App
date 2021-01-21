@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="ProgressApp.View.Touch">
+
+
+            <Grid RowDefinitions="200,*" >
+
+        <pancakeview:PancakeView BackgroundColor="Aqua" 
+                touch:TouchEff.RegularBackgroundColor="Green"
+                touch:TouchEff.PressedBackgroundColor="Red"
+                touch:TouchEff.PressedScale="1.5"
+                touch:TouchEff.RippleCount="10"
+                touch:TouchEff.PressedRotation="10"
+                touch:TouchEff.PressedRotationX="15"
+                touch:TouchEff.PressedRotationY="15"
+                touch:TouchEff.PressedTranslationX="5"
+                touch:TouchEff.PressedTranslationY="9"
+                touch:TouchEff.PressedAnimationDuration="500"
+                touch:TouchEff.RegularAnimationDuration="500" 
+                                 Padding="10, 5"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+                          WidthRequest="200" HeightRequest="200"       >
+            
+            <Label Text="Click Me" />
+                </pancakeview:PancakeView>
+
+                <StackLayout Grid.Row="1" Background="blue">
+                    <Label Text="Click Me"/>
+                    <Label Text="Click Me"/>
+                    <Label Text="Click Me"/>
+                    <Label Text="Click Me"/>
+                </StackLayout>
+                
+            </Grid>
+          
+       
+  
+</ContentPage>

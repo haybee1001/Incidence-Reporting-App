@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  mc:Ignorable="d"
+             x:Class="ProgressApp.View.network">
+    <pages:PopupPage.Content>
+        <yummy:PancakeView   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="WhiteSmoke" Margin="20"   Padding="30" CornerRadius="10"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <Label Text="Network Connection not found!! Check connection and Try again" FontSize="16" Grid.Row="1" VerticalOptions="Start"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                <Image Source="conection" Grid.Row="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="End"></Image>
+                <Button Text="close" WidthRequest="150" HeightRequest="40" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="Transparent" BorderColor="#D7DBDD" BorderWidth="1"  Margin="20" x:Name="btnNetwork" Clicked="btnClosed"></Button>
+
+            </Grid>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

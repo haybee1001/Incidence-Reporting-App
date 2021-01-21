@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:Pk="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:bc="clr-namespace:ProgressApp.ViewModel"
+             xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect" 
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ProgressApp.MainPage" BackgroundColor="{DynamicResource BaseColor}">
+
+
+    <ContentPage.BindingContext>
+        <bc:MainPageViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+    
+    <Grid>
+        <!--<BoxView x:Name="bgGradient" BackgroundColor="{DynamicResource BaseColor}" Scale="4" AnchorX="1" AnchorY="0">
+           
+        </BoxView>-->
+        <Grid x:Name="MainGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" x:Name="blueBar"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" BackgroundColor="Transparent" Padding="20">
+                <Grid ColumnDefinitions="Auto,*, Auto">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MenuTapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton Source="burger.png" WidthRequest="35" HeightRequest="37" BackgroundColor="Transparent" Clicked="MenuTapped" Padding="0,0,10,0" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="INCIDENCE REPORT" Grid.Column="1" FontFamily="BoldFont" FontSize="17" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" ></Label>
+                    </StackLayout>
+                    <ImageButton Source="message.png" WidthRequest="25" HeightRequest="25" BackgroundColor="Transparent" Grid.Column="2" Clicked="setTapped" VerticalOptions="Center" HorizontalOptions="Center"  />
+                </Grid>
+            </StackLayout>
+            
+            <StackLayout Grid.Row="1" HorizontalOptions="Center">
+                <Label Text="Mon, December 20th, 2020." FontFamily="LightFont" x:Name="lbldate" FontSize="14" TextColor="{DynamicResource OffWhite}"></Label>
+            </StackLayout>
+           
+            <Pk:PancakeView BackgroundColor="{DynamicResource OffWhite}" Grid.Row="2" CornerRadius="10" WidthRequest="800" HeightRequest="60" Margin="20,10,20,10" VerticalOptions="End" >
+                <Grid ColumnDefinitions="*,Auto" Padding="10">
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" >
+                        <Image Source="info.png" VerticalOptions="Center" WidthRequest="28" HeightRequest="28"></Image>
+                        <Label Text="Report status can now be tracked at 0% cost" VerticalOptions="Center" FontFamily="NormalFont" FontSize="12" x:Name="lblReportStack"></Label>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" Grid.Column="1" WidthRequest="5" HeightRequest="9">
+                        <Image Source="Icon_forward"/>
+                    </StackLayout>
+
+                </Grid>
+            </Pk:PancakeView>
+
+
+
+            <Pk:PancakeView Grid.Row="3" BackgroundColor="White" CornerRadius="50,50,0,0" VerticalOptions="End">
+                <ScrollView>
+                <Grid RowDefinitions="Auto">
+                   
+                    <StackLayout Margin="0,20,0,0">
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Row="0">
+
+                        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" Margin="50,30,50,30" RowSpacing="20" ColumnSpacing="30">
+
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="170" HeightRequest="140" CornerRadius="30" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}">
+
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FaultItemTapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Image Source="fault_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Fault" Grid.Row="1" FontFamily="LightFont" FontSize="13" TextColor="Black"></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="160" HeightRequest="140" CornerRadius="30" Grid.Row="0" Grid.Column="1" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}" >
+
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OutageItemTapped"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto,Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Image Source="outage_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Outage" Grid.Row="1" FontFamily="LightFont" FontSize="13" TextColor="Black"></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="160" HeightRequest="140" CornerRadius="30"  Grid.Row="1" Grid.Column="0" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}">
+
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ComplainItemTapped"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Image Source="complain_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Complain" Grid.Row="1" FontFamily="LightFont" FontSize="13" TextColor="Black"></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="160" HeightRequest="140" CornerRadius="30" Grid.Row="1" Grid.Column="1" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}">
+
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="HazardItemTapped"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Image Source="hazard_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Hazard" Grid.Row="1" FontFamily="LightFont" FontSize="13"  TextColor="Black"></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="160" HeightRequest="140" CornerRadius="30"   Grid.Row="2" Grid.Column="0" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}">
+
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="WhistleItemTapped"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Grid.Clip>
+                                        <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                                    </Grid.Clip>
+                                    <Image Source="whistle_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Whistle" Grid.Row="1" FontFamily="LightFont" FontSize="13"  TextColor="Black"></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+                                <Pk:PancakeView BackgroundColor="{DynamicResource BarColors}" WidthRequest="160" HeightRequest="140" CornerRadius="30" Grid.Row="2" Grid.Column="1" Shadow="{Pk:ShadowMarkup Color=#000000, Offset='0,5'}">
+                                <!--<Pk:PancakeView.Border>
+                                    <Pk:Border Thickness="1" Color="#E1E4DB " >
+                                        <Pk:Border.GradientStops>
+                                            <Pk:GradientStopCollection>
+                                                <Pk:GradientStop Color="#CFDCF6" Offset="1"/>
+                                                <Pk:GradientStop Color="#CFDCF6`" Offset="-0.1"/>
+                                                <Pk:GradientStop Color="#99AFDA" Offset="-0.1"/>
+                                                <Pk:GradientStop Color="#B9CAEC" Offset="-0.1"/>
+                                            </Pk:GradientStopCollection>
+                                        </Pk:Border.GradientStops>
+                                    </Pk:Border>
+                                </Pk:PancakeView.Border>-->
+                                <Pk:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TrackItemTapped"></TapGestureRecognizer>
+                                </Pk:PancakeView.GestureRecognizers>
+                                <Grid RowDefinitions="Auto, *" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Image Source="status_icon.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                    <Label Text="Status" Grid.Row="1" TextColor="Black" FontFamily="LightFont" FontSize="13" ></Label>
+                                </Grid>
+                            </Pk:PancakeView>
+                        </Grid>
+                    </StackLayout>
+
+                </Grid>
+                </ScrollView>
+            </Pk:PancakeView>
+ 
+            
+            <!--<Grid HorizontalOptions="Center" VerticalOptions="End"  Grid.Row="0" HeightRequest="50" WidthRequest="400" Margin="30" x:Name="gridCall">
+                <Grid.Clip>
+                    <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                </Grid.Clip>
+                <ImageButton Source="call" HeightRequest="30" WidthRequest="30" HorizontalOptions="Center" VerticalOptions="Center"  BackgroundColor="Transparent"/>
+                <StackLayout>
+                    <Image Source="mark.png" WidthRequest="40" HeightRequest="20" Opacity="0.3" TranslationY="5"/>
+                    <Label Text="ENUGU STATE" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontFamily="LightFont" FontSize="13" TextColor="White" Opacity="0.5"></Label>
+                </StackLayout>
+            </Grid>-->
+            
+           </Grid>
+
+        <Grid x:Name="MenuGrid" IsVisible="False">
+            <BoxView x:Name="MenuOverlay" BackgroundColor="#b3ccff" Opacity="0.2" Scale="4" AnchorX="1" AnchorY="0">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="overlayTapped"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Pk:PancakeView x:Name="MenuView" WidthRequest="260" BackgroundColor="{DynamicResource BaseColor}"  HorizontalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="200" Padding="0,20,30,10">
+                <Grid RowDefinitions="Auto, Auto, *">
+                    <StackLayout Orientation="Vertical">
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" HeightRequest="100" WidthRequest="100" Margin="0,20,0,0">
+                            <Grid.Clip>
+                                <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
+                            </Grid.Clip>
+                            <Image Source="incidence_logo1" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        </Grid>
+
+                        <Label Text="INCIDENCE REPORTING " VerticalOptions="Center" HorizontalOptions="Center" FontFamily="BoldFont" FontSize="14" TextColor="White"/>
+                        <!--<Label Text="APP." VerticalOptions="Center" HorizontalOptions="Center" FontFamily="BoldFont" FontSize="14" TextColor="White"/>-->
+                    </StackLayout>
+                    <StackLayout Margin="40,30,40,20" BindableLayout.ItemsSource="{Binding MenuList}" Spacing="2" Grid.Row="1" x:Name="menuStack">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal"  Padding="10" Spacing="2">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MenuItemTapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Grid HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2"
+                                      BackgroundColor="{DynamicResource SecondaryColor}" HeightRequest="50" WidthRequest="50">
+                                        <Grid.Clip>
+                                            <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                                        </Grid.Clip>
+                                        <Image Source="{Binding Icon}" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0"></Image>
+                                    </Grid>
+                                    <Label Text="{Binding Name}" TextColor="white" FontSize="14" FontFamily="NormalFont" HorizontalOptions="Center" VerticalOptions="Center" Padding="10,0,0,0"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout >
+                    <Pk:PancakeView Grid.Row="2" VerticalOptions="End" HorizontalOptions="End" TranslationY="-20">
+                        <StackLayout Orientation="Horizontal">
+                            <Grid HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{DynamicResource SecondaryColor}" HeightRequest="50" WidthRequest="50" Margin="20,20,0,0">
+                                <Grid.Clip>
+                                    <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                                </Grid.Clip>
+                                <ImageButton Source="shutdown_white" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="exitButtonClick"></ImageButton>
+                            </Grid>
+                        </StackLayout>
+                    </Pk:PancakeView>
+                </Grid>
+            </Pk:PancakeView>
+        </Grid>
+
+
+        <Grid x:Name="MenuGrid2" IsVisible="False">
+            <BoxView x:Name="MenuOverlay1" BackgroundColor="#b3ccff" Opacity="0.3">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="overlayTapped2"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Pk:PancakeView x:Name="MenuView2" WidthRequest="60"  BackgroundColor="{DynamicResource BaseColor}" VerticalOptions="Start" HorizontalOptions="End" CornerRadius="70,0,70,0" HeightRequest="200" Padding="0,20,20,30" TranslationY="10">
+                <Grid RowDefinitions="Auto, Auto, *" VerticalOptions="Center">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{DynamicResource SecondaryColor}" HeightRequest="50" WidthRequest="50" Margin="10,20,0,0">
+                            <Grid.Clip>
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                            </Grid.Clip>
+                            <ImageButton Source="call" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Clicked="phoneClicked" BackgroundColor="Transparent"></ImageButton>
+                        </Grid>
+
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{DynamicResource SecondaryColor}" HeightRequest="50" WidthRequest="50" Margin="10,20,0,0">
+                            <Grid.Clip>
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                            </Grid.Clip>
+                            <ImageButton Source="message" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Clicked="MessageClicked" BackgroundColor="Transparent" ></ImageButton>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </Pk:PancakeView>
+        </Grid>
+
+
+
+    </Grid>
+
+
+</ContentPage>

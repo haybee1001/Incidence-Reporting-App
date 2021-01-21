@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Pages:PopupPage  xmlns:Pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProgressApp.View.PhotoOptions">
+
+    <Pages:PopupPage.Content>
+        
+        <Frame CornerRadius="17" 
+           HorizontalOptions="Center" 
+           VerticalOptions="CenterAndExpand"
+           HasShadow="True"
+           IsClippedToBounds="True"
+           Padding="0">
+
+
+            <Grid WidthRequest="330" HeightRequest="200">
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" BackgroundColor="Transparent">
+
+                    <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout VerticalOptions="Start" HorizontalOptions="Start" Padding="10"  Grid.Row="0" Margin="0,10,0,0" >
+                            <Label Text="Capture Photo"  FontSize="16" Margin="10,0,0,10" FontAttributes="Bold" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Start"   Padding="10,0,10,0"   Grid.Row="1"  >
+                            <Label Text="Take Photo..." x:Name="takeLabel" FontSize="16" Margin="10,0,0,20" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Start"  Padding="10,5,10,0"   BackgroundColor="White" Grid.Row="2" >
+                            <Label Text="Choose from Library..." FontSize="16" Margin="10,0,0,10" x:Name="ChooseLabel" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="End"  BackgroundColor="White" Grid.Row="3"   >
+                            <Label Text="Proceed" HorizontalTextAlignment="End" Padding="0,10,0,0" TextColor="#58BAFA" FontSize="20" x:Name="cancelLabel"/>
+                        </StackLayout>
+
+                    </Grid>
+
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" BackgroundColor="Transparent">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <ImageButton  Source="ic_add_a_photo.png" WidthRequest="75" HeightRequest="75" BackgroundColor="Transparent" HorizontalOptions="Start"  Margin="0,0,0,0"  Grid.Row="1" x:Name="previewImage" IsVisible="False" />
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+    </Pages:PopupPage.Content>
+
+</Pages:PopupPage>

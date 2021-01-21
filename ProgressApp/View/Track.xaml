@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="ProgressApp.View.Track" NavigationPage.HasNavigationBar="False" BackgroundColor="{DynamicResource BaseColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" x:Name="bluebar"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackLayout BackgroundColor="Transparent">
+         
+            <Grid ColumnDefinitions="Auto, Auto, * ,Auto" Padding="20" ColumnSpacing="0">
+                <StackLayout Orientation="Horizontal"  Padding="10">
+                    <ImageButton Source="rename.png" WidthRequest="23" HeightRequest="22"  x:Name="backButton" Clicked="backClicked" BackgroundColor="Transparent" TranslationX="-15"/>
+                    <Label Text="Back" Grid.Column="1" FontFamily="BoldFont" FontSize="18" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="-20"></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="backTapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <Label Text="Track Report" Grid.Column="2" FontFamily="MediumFont" FontSize="18" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  TranslationX="-20" ></Label>
+                <ImageButton Source="menuright.png" WidthRequest="22" HeightRequest="22" BackgroundColor="Transparent" Grid.Column="3" />
+            </Grid>
+        </StackLayout>
+        <StackLayout Grid.Row="1" BackgroundColor="WhiteSmoke">
+            <Grid RowDefinitions="20, Auto, *">
+                <StackLayout>
+
+                </StackLayout>
+
+                <pancakeview:PancakeView BackgroundColor="White" Grid.Row="1" Padding="20" Margin="25,0,25,0" TranslationY="-60" CornerRadius="5" Shadow="{pancakeview:ShadowMarkup Color=#474747, Offset='10,10'}">
+                    <pancakeview:PancakeView.Border>
+                        <pancakeview:Border Thickness="1" Color="#E1E4DB " >
+                            <pancakeview:Border.GradientStops>
+                                <pancakeview:GradientStopCollection>
+                                    <pancakeview:GradientStop Color="#D1D3DD" Offset="1"/>
+                                    <pancakeview:GradientStop Color="#D1D3DD" Offset="-0.1"/>
+                                    <pancakeview:GradientStop Color="#D1D3DD" Offset="-0.1"/>
+                                    <pancakeview:GradientStop Color="#D1D3DD" Offset="-0.1"/>
+                                </pancakeview:GradientStopCollection>
+                            </pancakeview:Border.GradientStops>
+                        </pancakeview:Border>
+                    </pancakeview:PancakeView.Border>
+                    <Frame HasShadow="False" CornerRadius="15" HeightRequest="42" Padding="10,0" BackgroundColor="WhiteSmoke" BorderColor="WhiteSmoke">
+                        <Grid ColumnDefinitions="*,Auto">
+                                <StackLayout>
+                                    <Entry Placeholder="Enter Tracking ID" FontSize="14" TextColor="#A3A6AA" x:Name="txtTrackID" ></Entry>
+                                </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <ImageButton Source="searchicon.png" WidthRequest="22" HeightRequest="22" BackgroundColor="Transparent" TranslationY="10" Clicked="trackReport" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="2" Margin="30,0,30,0" Padding="10" IsVisible="False" x:Name="summaryView" > 
+                    <ScrollView>
+                        <Grid RowDefinitions="*,*, *, *, *" RowSpacing="35" x:Name="summaryViewSpacing">
+
+                            <Grid ColumnDefinitions="Auto, *,Auto" Grid.Row="0" ColumnSpacing="10" >
+                                <Image Source="id.png" WidthRequest="25" HeightRequest="25"></Image>
+                                <StackLayout Grid.Column="1" >
+                                    <Label Text="TRACKING ID" FontFamily="MediumFont" FontSize="12" TextColor="Black"></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="" FontFamily="NormalFont" FontSize="12" x:Name="lblTrackID"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" Grid.Row="1" >
+                                <Image Source="calendar.png" WidthRequest="22" HeightRequest="20"></Image>
+                                <StackLayout Grid.Column="1" >
+                                    <Label Text="DATE REPORTED" FontFamily="MediumFont" FontSize="12" TextColor="Black" ></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="" FontFamily="NormalFont" FontSize="12" x:Name="lblReportDate"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" Grid.Row="2" >
+                                <Image Source="user.png" WidthRequest="30" HeightRequest="30"></Image>
+                                <StackLayout Grid.Column="1" >
+                                    <Label Text="REPORTER" FontFamily="MediumFont" FontSize="12" TextColor="Black" ></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="" FontFamily="NormalFont" FontSize="12" x:Name="lblReporterName"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" Grid.Row="3" >
+                                <Image Source="marker.png" WidthRequest="22" HeightRequest="20"></Image>
+                                <StackLayout Grid.Column="1" >
+                                    <Label Text="DISTRICT" FontFamily="MediumFont" FontSize="12" TextColor="Black" ></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="" FontFamily="NormalFont" FontSize="12" x:Name="tDistrict"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" Grid.Row="4" >
+                                <Image Source="searchicon.png" WidthRequest="22" HeightRequest="20"></Image>
+                                <StackLayout Grid.Column="1" >
+                                    <Label Text="STATUS" FontFamily="MediumFont" FontSize="12" TextColor="Black" ></Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="" FontFamily="NormalFont" FontSize="12" x:Name="lblStatus"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                        </Grid>
+                    </ScrollView>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="noRecord">
+                    <Label Text="No Record Found " FontFamily="MediumFont"></Label>
+                </pancakeview:PancakeView>
+            </Grid>
+        </StackLayout>
+
+        <Grid HorizontalOptions="End" VerticalOptions="End" BackgroundColor="#6699FF" Grid.Row="1" HeightRequest="50" WidthRequest="50" Margin="30" x:Name="gridCall">
+            <Grid.Clip>
+                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+            </Grid.Clip>
+
+            <ImageButton Source="call" HeightRequest="30" WidthRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Clicked="callClicked" BackgroundColor="Transparent"/>
+
+        </Grid>
+    </Grid>
+</ContentPage>

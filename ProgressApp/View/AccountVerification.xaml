@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  mc:Ignorable="d"
+             x:Class="ProgressApp.View.AccountVerification"  CloseWhenBackgroundIsClicked="False" Visual="Material" BackgroundColor="{DynamicResource BaseColor}">
+
+
+    <pages:PopupPage.Content>
+
+        <yummy:PancakeView WidthRequest="300" HeightRequest="300"  HorizontalOptions="Center" Margin="20" VerticalOptions="CenterAndExpand" BackgroundColor="White" CornerRadius="20">
+            <Grid Margin="20,50,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Padding="30,0,30,0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Account - Meter Number Verification" TextColor="Black" HorizontalTextAlignment="Center"  FontSize="18"  FontFamily="MediumFont" Opacity="0.6"></Label>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" >
+                    <yummy:PancakeView WidthRequest="200" Margin="20,20,20,0" Padding="30,0,30,0" BackgroundColor="WhiteSmoke" CornerRadius="20">
+                        <Entry Placeholder=" Meter or Account No" HorizontalTextAlignment="Center" x:Name="txtNumber" FontSize="15" Keyboard="Numeric"></Entry>
+                    </yummy:PancakeView>
+                    <Label Text="Status" x:Name="lblStatus" IsVisible="False" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Margin="0,30,0,0" >
+                    <Grid HorizontalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Verify" CornerRadius="20"  BackgroundColor="#5A78F1" WidthRequest="200" HorizontalOptions="End" TextColor="White" Grid.Column="0" x:Name="Btnverify" Clicked="btnVerifyClicked" />
+                        <Button Text="Close" CornerRadius="20"  BackgroundColor="#5A78F1" WidthRequest="200" HorizontalOptions="Start" TextColor="White" Grid.Column="1" x:Name="btnClose" Clicked="btnCloseClicked" />
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+
+
+
+</pages:PopupPage>

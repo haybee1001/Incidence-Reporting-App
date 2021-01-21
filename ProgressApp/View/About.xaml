@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ProgressApp.View.About" BackgroundColor="{DynamicResource BaseColor}">
+
+    <Grid RowDefinitions="80,150,*">
+        <StackLayout BackgroundColor="Transparent">
+            <Grid ColumnDefinitions="Auto, Auto, * ,Auto" Padding="20,20,20,0" ColumnSpacing="10">
+                <ImageButton Source="rename.png" WidthRequest="20" HeightRequest="16" BackgroundColor="Transparent" x:Name="backButton" Clicked="backClicked"/>
+                <Label Text="Back" Grid.Column="1" FontFamily="BoldFont" FontSize="18" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start"></Label>
+                <ImageButton Source="menuright.png" WidthRequest="22" HeightRequest="22" BackgroundColor="Transparent" Grid.Column="3" />
+            </Grid>
+        </StackLayout>
+
+        <pancakeview:PancakeView Margin="0,0,0,10" Grid.Row="1" >
+            <StackLayout>
+                <ImageButton Source="incidence_logo" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"/>
+                <Label Text="About Incidence " VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontFamily="MediumFont" TextColor="White"/>
+                <Label Text="Reporting Application " VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" FontFamily="NormalFont" TextColor="White"/>
+            </StackLayout>
+        </pancakeview:PancakeView>
+
+        <pancakeview:PancakeView BackgroundColor="White" Grid.Row="2">
+            <StackLayout>
+                <ScrollView>
+                <Grid ColumnDefinitions="*,*">
+                    <StackLayout Grid.ColumnSpan="2">
+                        <Label  VerticalOptions="Center" HorizontalOptions="Start" FontSize="14" FontFamily="Light Font" TextColor="Black" Padding="30,30,30,10" VerticalTextAlignment="20" LineBreakMode="WordWrap" Opacity="0.8" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Incidence Reporting App allows reporting of incidence (Faults, Outage, Complain, Hazard and Whistle) in realtime with Photo and location information"
+                              LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label  VerticalOptions="Start" FontAttributes="Bold" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,10,0,0" Text="1. Fault"  Opacity="0.7" >
+
+                        </Label>
+                        <Label  VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,0,30,0" LineBreakMode="WordWrap" Opacity="0.5"   >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Allows reporting of fault related Incidence including: Voltage Fluctuation, Fallen/Bent Poles, Transformer Fault, Phase Failure and more"
+                          LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label  VerticalOptions="Start" FontAttributes="Bold" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,10,0,0" Text="2. Outage" Opacity="0.7" >
+
+                        </Label>
+                        <Label  VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,0,30,0" LineBreakMode="WordWrap" Opacity="0.5" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Allows reporting of Outage related Incidence such as Prolonged Outage"
+                          LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+
+                        <Label  VerticalOptions="Start" FontAttributes="Bold" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,10,0,0" Text="3. Complain" Opacity="0.7" >
+
+                        </Label>
+                        <Label  VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,0,30,0" LineBreakMode="WordWrap" Opacity="0.5" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Allows laying of Complaints related to Burnt Meter, Tamper Code, Stolen Meter, Payment Issues, Vending Issues, Wrong Disconnection"
+                          LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+
+                        <Label  VerticalOptions="Start" FontAttributes="Bold" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,10,0,0" Text="4. Hazards" Opacity="0.7" >
+
+                        </Label>
+                        <Label  VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,0,30,0" LineBreakMode="WordWrap" Opacity="0.5" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Allows reporting of Hazard related Incidence including: Vegetation Interference, Live Cable Snapping and more"
+                          LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label  VerticalOptions="Start" FontAttributes="Bold" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,10,0,0" Text="5. Whistle" Opacity="0.7" >
+
+                        </Label>
+                        <Label  VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="13" FontFamily="Light Font" TextColor="Black" Padding="30,0,30,0" LineBreakMode="WordWrap" Opacity="0.5" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Allows reporting of Whistle Blowing related complaint such as: Extortion, Bills not distributed, Paying to Marketer, Paying to Illegal 3rd Party, Double Feeding, Illegal Disconnection, Meter Bye pass, Meter Tampering  and more"
+                          LineHeight="1.2" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <!--<StackLayout Orientation="Horizontal" Spacing="50">
+                       
+                    </StackLayout>-->
+                </Grid>
+                </ScrollView>
+            </StackLayout>
+        </pancakeview:PancakeView>
+    </Grid>
+</ContentPage>

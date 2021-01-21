@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BaseColor}"
+             x:Class="ProgressApp.View.IncidenceReport">
+
+    <Grid RowDefinitions="Auto, *" Padding="30" RowSpacing="0" x:Name="mainGridPadding">
+
+
+
+        <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="2" >
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="backTapped"/>
+                </StackLayout.GestureRecognizers>
+                <ImageButton Source="rename.png" WidthRequest="23" HeightRequest="20" BackgroundColor="Transparent" x:Name="backButton" Clicked="backButtonClicked" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="-15"/>
+                <Label Text="Back" Grid.Column="1" FontFamily="BoldFont" FontSize="18" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start"  TranslationY="-3" TranslationX="-20" ></Label>
+            </StackLayout>
+            <ImageButton Source="menuright.png" WidthRequest="22" HeightRequest="22" BackgroundColor="Transparent" Grid.Column="2" />
+        </Grid>
+        
+        
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="0">
+                <pancakeview:PancakeView CornerRadius="15" BackgroundColor="White"  Margin="0,25,0,0" Padding="20">
+                    <Grid RowDefinitions="Auto, Auto" RowSpacing="15" x:Name="overallRowSpacing">
+                        <pancakeview:PancakeView HeightRequest="40" CornerRadius="23" BackgroundColor="{DynamicResource BaseColor}"  x:Name="tagHeight">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="REPORT TYPE" VerticalOptions="Center" HorizontalOptions="Center" x:Name="lblReportType" TextColor="White" FontFamily="LightFont" FontSize="12" ></Label>
+                                <ImageButton Source="menuright.png" WidthRequest="15" HeightRequest="15" BackgroundColor="Transparent" Opacity="0.7"/>
+                                <Label Text="LOCATION" VerticalOptions="Center" HorizontalOptions="Center" x:Name="lblLocation" TextColor="White"  FontFamily="LightFont" FontSize="12"></Label>
+                                <ActivityIndicator
+                                    x:Name="locationLoader"
+                                    Color="White"
+                                    IsRunning="True"
+                                    IsEnabled="True"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="15"
+                                    WidthRequest="15"/>
+                            </StackLayout>
+                        </pancakeview:PancakeView>
+
+                        <StackLayout Grid.Row="1" Margin="0,0,0,10">
+                            <StackLayout>
+                                <Label Text="Type" FontSize="14" FontFamily="NormalFont" x:Name="lblType"/>
+                                <Frame HasShadow="false" CornerRadius="6" HeightRequest="40" Padding="15,0" BackgroundColor="White" BorderColor="#598EFE" x:Name="frameType">
+                                    <Picker x:Name="PickType" Title="Select Type" FontSize="14" >
+                                        <Picker.Items>
+                                            <x:String>"Add"</x:String>
+                                            <x:String>"Delete"</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Description" FontSize="14" FontFamily="NormalFont" x:Name="lblDescription"/>
+                                <Frame HasShadow="false" CornerRadius="6" HeightRequest="40" Padding="15,0" BackgroundColor="White" BorderColor="#598EFE" x:Name="FrameDescription">
+                                    <Entry Placeholder="Description" FontSize="14" x:Name="entDescription"></Entry>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Reporter Name" FontSize="14" FontFamily="NormalFont" x:Name="lblReporterName"/>
+                                <Frame HasShadow="false" CornerRadius="6" HeightRequest="40" Padding="15,0" BackgroundColor="White" BorderColor="#598EFE" x:Name="FrameName">
+                                    <Entry Placeholder="Name" FontSize="14" x:Name="entReporterName"></Entry>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Phone Number" FontSize="14" FontFamily="NormalFont" x:Name="lblPhoneNumber"/>
+                                <Frame HasShadow="false" CornerRadius="6" HeightRequest="40" Padding="15,0" BackgroundColor="White" BorderColor="#598EFE" x:Name="FramePhoneNumber">
+                                    <Entry Placeholder="Phone Number" FontSize="14" x:Name="entPhoneNumber" Keyboard="Numeric"></Entry>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <ImageButton Source="cam" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Margin="0,20,0,0" Clicked="TakePhoto"></ImageButton>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <CheckBox x:Name="chkAgree" Color="#5A78F1" TranslationY="-7"></CheckBox>
+                                    <Label Text="I confirm the information provided" Margin="0,0,0,0 " x:Name="confirmationtext"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </pancakeview:PancakeView>
+
+                <Button HeightRequest="40" CornerRadius="20" FontSize="12" TextColor="White" Text="Submit REPORT" FontFamily="NormalFont" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#5A78F1" Margin="0,-20,0,0"  Clicked="Submit_Data"/>
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
