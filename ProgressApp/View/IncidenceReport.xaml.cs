@@ -21,7 +21,7 @@ using Polly;
 
 
 using Rg.Plugins.Popup.Services;
-using Xamarin.Forms.Markup;
+
 using Xamarin.Essentials;
 using ProgressApp.Model;
 
