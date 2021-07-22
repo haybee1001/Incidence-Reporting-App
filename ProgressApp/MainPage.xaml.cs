@@ -10,6 +10,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms.PancakeView;
 using System.Threading;
 using Rg.Plugins.Popup.Services;
+using Plugin.Connectivity;
+using System.Net.Http;
 
 
 namespace ProgressApp
@@ -155,6 +157,26 @@ namespace ProgressApp
             MenuGrid2.IsVisible = false;
         }
 
+
+        public void OpenMenu3()
+        {
+            MenuGrid3.IsVisible = true;
+
+            Action<double> callback = input => MenuView3.TranslationY = input;
+            MenuView3.Animate("anim", callback, 400, 0, 600, 700, Easing.BounceIn);
+
+            AnimationView.IsPlaying = true;
+
+        }
+
+        public void CloseMenu3()
+        {
+            Action<double> callback = input => MenuView3.TranslationY = input;
+            MenuView3.Animate("anim", callback, 0, -260, 16, 360, Easing.BounceOut);
+            MenuGrid3.IsVisible = false;
+            txtTrackID.Text = "";
+        }
+
         private void overlayTapped(object sender, EventArgs e)
         {
             CloseMenu();
@@ -163,6 +185,10 @@ namespace ProgressApp
         private void overlayTapped2(object sender, EventArgs e)
         {
             CloseMenu2();
+        }
+        private void overlayTapped3(object sender, EventArgs e)
+        {
+            CloseMenu3();
         }
 
         private void MenuTapped(object sender, EventArgs e)
@@ -201,6 +227,7 @@ namespace ProgressApp
         private void setTapped(object sender, EventArgs e)
         {
             OpenMenu2();
+           // OpenMenu3();
         }
 
 
@@ -293,17 +320,86 @@ namespace ProgressApp
             Device.OpenUri(new Uri(String.Format("mailto:{0}?subject={1}&body={2}", toEmail, emailSubject, emailBody)));
         }
 
+        private async void AccountVerification(object sender, EventArgs e)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                await PopupNavigation.Instance.PushAsync(new loading());
+
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+
+                        string no = txtTrackID.Text.ToString();
+                        client.BaseAddress = new Uri("http://denceapp.somee.com/api/incidence/validateMeterNo/");
+                        var responseTask = client.GetAsync(no);
+
+                        responseTask.Wait();
+
+                        var result = responseTask.Result;
+
+                        if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+                        {
+
+                            transactionStatus.IsVisible = true;
+                            transactionStatus.Text = "Verification Not Successful!";
+                            transactionStatus.TextColor = System.Drawing.Color.Red;
+                            // Stop the activity indicator
+                            //await PopupNavigation.Instance.PopAsync();
+                        }
+                        else
+                        {
+                            transactionStatus.Text = "Verified Successfully!";
+                            await PopupNavigation.Instance.PopAsync();
+                            CloseMenu3();
+                            await Navigation.PushAsync(new IncidenceReport("Complain"));
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await PopupNavigation.Instance.PushAsync(new no_internet());
+                    await Navigation.PopAsync();
+                    // await PopupNavigation.Instance.PopAsync();
+                }
+            }
+
+
+            //    if (txtTrackID.Text == "11111")
+            //{
+            //    CloseMenu3();
+            //    await Navigation.PushAsync(new IncidenceReport("Complain"));
+            //}
+        }
+
+        private void CloseClicked(object sender, EventArgs e)
+        {
+            CloseMenu3();
+        }
+
+        private void nextClicked(object sender, EventArgs e)
+        {
+            
+        }
+
         private async void ComplainItemTapped(object sender, EventArgs e)
         {
             var stack = sender as PancakeView;
 
-            stack.BackgroundColor = Color.FromHex("99#F2F1F1");
+            stack.BackgroundColor = Color.FromHex("#F2F1F1");
 
             await Task.Delay(100); // delay 0.1s
 
             stack.BackgroundColor = Color.FromHex("#FFFFFF");
 
-            await Navigation.PushAsync(new IncidenceReport("Complain"));
+            OpenMenu3();
+
+            transactionStatus.Text = "";
+          
         }
 
 

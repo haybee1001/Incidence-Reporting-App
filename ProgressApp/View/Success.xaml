@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page:PopupPage  xmlns:Page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                 mc:Ignorable="d"
+             x:Class="ProgressApp.View.Success" NavigationPage.HasNavigationBar="False" BackgroundColor="{DynamicResource BaseColor}"  CloseWhenBackgroundIsClicked="False">
+    
+       
+                
+                <Grid RowDefinitions="300" VerticalOptions="Center">
+
+                    <pancakeview:PancakeView Grid.Row="0" BackgroundColor="White" CornerRadius="15" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" Padding="20" x:Name="root">
+                        <Grid RowDefinitions="50,*">
+                            <forms:AnimationView 
+                                        x:Name="AnimationView" 
+                                        Animation="submitsuccess.json" 
+                                        AutoPlay="True" Loop="False"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand" HeightRequest="60" WidthRequest="60" />
+                        <StackLayout Grid.Row="1" Padding="20">
+                            <Grid RowDefinitions="Auto, auto, Auto, *">
+                                <Label Text="Congratulations!!!" FontSize="18" HorizontalTextAlignment="Center"></Label>
+                                <Label Text="You have successfully reported and incidence" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="1"  ></Label>
+                                <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Text="Your report ID is:" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0,0,0,10"></Label>
+                                    <Label Text="309039" FontAttributes="Bold" FontSize="16" x:Name="trackNo" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="0,0,0,10"></Label>
+                                </StackLayout>
+
+                                <Button Text="continue" Grid.Row="3" CornerRadius="30" BackgroundColor="{DynamicResource BaseColor}" TextColor="White" x:Name="Capture" Clicked="buttonCLicked"/>
+
+                            </Grid>
+                        </StackLayout>
+                  </Grid>
+
+                 </pancakeview:PancakeView>
+
+            
+                  </Grid>
+                
+            
+          
+       
+   
+    
+</Page:PopupPage>

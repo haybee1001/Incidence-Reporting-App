@@ -144,7 +144,7 @@ namespace ProgressApp.View
             }
             else if (reporttype == "Complain")
             {
-                PopupNavigation.Instance.PushAsync(new AccountVerification());
+               // PopupNavigation.Instance.PushAsync(new AccountVerification());
 
                 var pickerList = new List<string>();
                 pickerList.Add("Burnt Meter");
@@ -213,11 +213,11 @@ namespace ProgressApp.View
                             lat = lc.Latitude;
                             lon = lc.Longitude;
                             lblLocation.Text = lat.ToString();
-                            lblLocation.Text = "ENUGU";
-                            locationLoader.IsRunning = false;
-                            locationLoader.IsEnabled = false;
-                            locationLoader.IsVisible = false;
-                        //verifyUserLocation();
+                            //lblLocation.Text = "ENUGU";
+                            //locationLoader.IsRunning = false;
+                            //locationLoader.IsEnabled = false;
+                            //locationLoader.IsVisible = false;
+                            verifyUserLocation(lat, lon);
                     }
                     }
                 }
@@ -249,12 +249,12 @@ namespace ProgressApp.View
         }
 
         //Check user location & ensure only users within EEDC coverage area can use the app (Enugu/Abia/Anambra/Imo/Ebonyi)
-        public async void verifyUserLocation()
+        public async void verifyUserLocation(double _lat, double _lon)
         {
             try
             {
                 //Edo State (6.347571, 5.599892)
-                var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+                var placemarks = await Geocoding.GetPlacemarksAsync(_lat, _lon);
 
                 var placemark = placemarks?.FirstOrDefault();
                 if (placemark != null)
@@ -284,7 +284,6 @@ namespace ProgressApp.View
                 ObtainDeviceLocation();
                 // Handle exception that may have occurred in geocoding
                 await DisplayAlert("Info", ex.Message.ToString(), "Close");
-
 
             }
         }
@@ -401,7 +400,7 @@ namespace ProgressApp.View
                                     await PopupNavigation.Instance.PopAsync();
                                     PickType.SelectedIndex = 0;
                                     MessagingCenter.Send<Object, String>(this, "Tracker", userTrackID);
-                                    await PopupNavigation.Instance.PushAsync(new submitSuccess(userTrackID));
+                                    await PopupNavigation.Instance.PushAsync(new Success(userTrackID));
                                     _received = null;
                                 }
 

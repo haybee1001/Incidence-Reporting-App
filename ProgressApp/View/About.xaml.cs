@@ -30,5 +30,15 @@ namespace ProgressApp.View
         {
             Navigation.PopAsync();
         }
+
+        private void backTapped(object sender, EventArgs e)
+        {
+          //  Navigation.PopAsync();
+        }
+
+        private void backButtonClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

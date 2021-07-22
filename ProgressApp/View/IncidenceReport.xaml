@@ -27,7 +27,7 @@
         
 
         <ScrollView Grid.Row="1">
-            <StackLayout Spacing="0">
+            <StackLayout Spacing="0" VerticalOptions="Start">
                 <pancakeview:PancakeView CornerRadius="15" BackgroundColor="White"  Margin="0,25,0,0" Padding="20">
                     <Grid RowDefinitions="Auto, Auto" RowSpacing="15" x:Name="overallRowSpacing">
                         <pancakeview:PancakeView HeightRequest="40" CornerRadius="23" BackgroundColor="{DynamicResource BaseColor}"  x:Name="tagHeight">
@@ -85,10 +85,10 @@
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
-                    </Grid>
+                    </Grid> 
                 </pancakeview:PancakeView>
 
-                <Button HeightRequest="40" CornerRadius="20" FontSize="12" TextColor="White" Text="Submit REPORT" FontFamily="NormalFont" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#5A78F1" Margin="0,-20,0,0"  Clicked="Submit_Data"/>
+                <Button HeightRequest="40" CornerRadius="20" FontSize="12" TextColor="White" Text="Submit REPORT" FontFamily="NormalFont" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="1" BorderColor="#5A78F1" BackgroundColor="{DynamicResource BaseColor}" Margin="0,-20,0,0"  Clicked="Submit_Data"/>
                 
             </StackLayout>
         </ScrollView>

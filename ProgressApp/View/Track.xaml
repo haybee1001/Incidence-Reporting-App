@@ -126,8 +126,8 @@
                 <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
             </Grid.Clip>
 
-            <ImageButton Source="call" HeightRequest="30" WidthRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Clicked="callClicked" BackgroundColor="Transparent"/>
-
+            <ImageButton Source="call" HeightRequest="30" WidthRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Clicked="callClicked" BackgroundColor="Transparent"/> 
         </Grid>
+        
     </Grid>
 </ContentPage>

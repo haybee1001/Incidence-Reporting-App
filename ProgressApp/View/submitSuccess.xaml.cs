@@ -27,7 +27,7 @@ namespace ProgressApp.View
 
         private void BtnCloseTicket(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+           // PopupNavigation.Instance.PopAsync();
         }
     }
 }
