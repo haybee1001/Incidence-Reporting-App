@@ -78,7 +78,7 @@
                                 </Frame>
                             </StackLayout>
                             <StackLayout>
-                                <ImageButton Source="cam" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Margin="0,20,0,0" Clicked="TakePhoto"></ImageButton>
+                                <ImageButton Source="cam" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Margin="0,20,0,0" Clicked="TakePhoto" x:Name="capturedImage"></ImageButton>
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                                     <CheckBox x:Name="chkAgree" Color="#5A78F1" TranslationY="-7"></CheckBox>
                                     <Label Text="I confirm the information provided" Margin="0,0,0,0 " x:Name="confirmationtext"></Label>

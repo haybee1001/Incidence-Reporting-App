@@ -1,4 +1,5 @@
-﻿using ProgressApp.Model;
+﻿
+using ProgressApp.Model;
 using ProgressApp.View;
 using System;
 using Xamarin.Forms;
@@ -21,7 +22,9 @@ namespace ProgressApp
         {
             InitializeComponent();
             Device.SetFlags(new[] { "MediaElement_Experimental", "Brush_Experimental" });
+            
             MainPage = new NavigationPage(new MainPage());
+           // MainPage = new Storage();
         }
 
         protected override void OnStart()
